@@ -5,20 +5,23 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'node:18-alpine'
-                    reuseNode true
+                    image 'node:18-alpine'  // Correct node image
+                    reuseNode true  // Allows reusing the workspace
                 }
             }
             steps {
-                sh '''
-                   ls -la
-                   node --version
-                   npm --version
-                   npm ci
-                   npm run build
-                   ls -la
-                '''
+                script {
+                    sh '''
+                        ls -la
+                        node --version
+                        npm --version
+                        npm ci
+                        npm run build
+                        ls -la
+                    '''
+                }
             }
         }
     }
 }
+
