@@ -10,7 +10,6 @@ pipeline {
                 }
             }
             steps {
-                script {
                     sh '''
                         ls -la
                         node --version
@@ -19,7 +18,6 @@ pipeline {
                         npm run build
                         ls -la
                     '''
-                }
             }
         }
     }
